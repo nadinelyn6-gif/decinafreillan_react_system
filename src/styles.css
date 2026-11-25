@@ -136,6 +136,27 @@ h1{
   background:linear-gradient(180deg,#100e08,#070707);
   box-shadow:0 0 18px rgba(255,194,30,.08);
 }
+.badge::before{
+  content:"";
+  display:inline-block;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  margin-right:8px;
+  vertical-align:middle;
+  background:currentColor;
+  opacity:.85;
+}
+.badge.online{
+  border-color:rgba(120,220,140,.4);
+  color:#a8e6b4;
+  box-shadow:0 0 18px rgba(90,220,120,.12);
+}
+.badge.offline{
+  border-color:rgba(255,130,95,.4);
+  color:#f2b6a3;
+  box-shadow:0 0 18px rgba(255,110,70,.12);
+}
 
 .wrap{max-width:1240px;gap:26px}
 .panel{
@@ -338,3 +359,52 @@ a.dl{color:#ffe27a;text-shadow:0 0 10px rgba(255,195,30,.18)}
 .card{min-height:160px;display:grid;place-items:center;text-align:center;padding:24px;margin-top:14px;border:1px solid rgba(255,200,50,.3);border-radius:20px;background:linear-gradient(145deg,#181307,#080807);font-size:18px;cursor:pointer}
 .card[data-s="1"]{border-color:#ffd23c;color:#fff1a6}
 .exam-hidden{display:none}
+
+/* ===== TASKS ===== */
+.task-form{display:flex;gap:10px;align-items:stretch}
+.task-form input{flex:1;min-width:0}
+.task-toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+.task-filters{display:flex;gap:8px;flex-wrap:wrap}
+.task-filters .chip{padding:7px 14px;font-size:13px}
+.task-filters .chip.active{border-color:#ffd23c;color:#fff1a6;background:linear-gradient(145deg,#211a08,#0c0b07);box-shadow:0 0 16px rgba(255,190,20,.12)}
+.task-count{color:var(--mu);font-size:13px}
+.task-list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.task{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;border:1px solid rgba(255,200,50,.14);border-radius:16px;background:linear-gradient(145deg,#0d0c08,#050505)}
+.task.done{opacity:.62}
+.task.done .task-title{text-decoration:line-through;color:var(--mu)}
+.task-main{display:flex;align-items:center;gap:10px;flex:1;min-width:0;cursor:pointer}
+.task-main input[type=checkbox]{width:18px;height:18px;flex:none;accent-color:#ffd23c}
+.task-title{overflow-wrap:anywhere}
+.task-edit{padding:6px 10px!important;border-radius:10px!important;font-size:15px!important}
+.task-actions{margin:0;flex-wrap:nowrap}
+.task-actions .btn{padding:7px 12px;font-size:13px;border-radius:12px}
+.task-empty{color:var(--mu);text-align:center;padding:18px 0}
+
+/* ===== ACCOUNT / LOGIN ===== */
+.brand-copy{min-width:0;flex:1}
+.header-actions{display:grid;justify-items:end;gap:10px;margin-left:auto}
+.header-actions .badge{margin-left:0}
+.logout-btn{padding:8px 16px;font-size:13px;border-radius:999px}
+.user-chip{color:var(--mu);font-size:12px;text-align:right;overflow-wrap:anywhere}
+@media(max-width:700px){.header-actions{width:100%;margin-left:0;justify-items:start}.user-chip{text-align:left}}
+
+.route-loading{min-height:60vh;display:grid;place-items:center;color:var(--mu)}
+.auth-page{min-height:calc(100vh - 48px);display:grid;place-items:center;padding:24px 12px}
+.auth-card{width:min(100%,460px);padding:32px 28px;border:1px solid rgba(255,196,35,.24);border-radius:30px;background:linear-gradient(145deg,rgba(22,18,8,.97),rgba(5,5,5,.98));box-shadow:0 24px 80px rgba(0,0,0,.6),0 0 45px rgba(255,190,0,.05)}
+.auth-card h1{text-align:center;font-size:clamp(26px,5vw,34px);margin-bottom:24px}
+.auth-mark{margin:0 auto 14px;width:60px;height:60px;border-radius:20px}
+.auth-form{display:grid;gap:16px}
+.auth-form h2{margin:0;text-align:center;font:700 24px/1.2 'Playfair Display',Georgia,serif}
+.auth-sub{margin:0 0 6px;text-align:center;color:var(--mu);font-size:14px}
+.field{display:grid;gap:8px;min-width:0}
+.field>span:first-child{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c9b477}
+.field input{width:100%;min-width:0;background:linear-gradient(145deg,#080808,#030303);color:#fff9e5;border:1px solid rgba(255,200,50,.2);border-radius:14px;padding:12px 14px;font:500 15px/1.5 Manrope,system-ui,sans-serif}
+.field input:focus{outline:none;border-color:#d89b13;box-shadow:0 0 0 3px rgba(255,195,35,.08)}
+.password-field{display:flex;gap:8px}
+.password-field input{flex:1;min-width:0}
+.password-toggle{flex:none;padding:10px 14px;font-size:13px;border-radius:14px}
+.auth-error{margin:0;padding:10px 12px;border:1px solid rgba(255,120,90,.35);border-radius:12px;background:rgba(160,45,25,.12);color:#ffb3a2;font-size:13px}
+.auth-submit{width:100%;margin-top:2px}
+.auth-switch{margin:20px 0 0;text-align:center;color:var(--mu);font-size:14px}
+.link-button{background:none;border:0;padding:0;color:var(--gold2);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer}
+

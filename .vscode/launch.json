@@ -1,0 +1,14 @@
+{
+  // Run "npm run dev" in the VS Code terminal first, then press F5.
+  // The app is served by Vite on port 5173 (not 8080, and not via Live Server).
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against Vite (localhost:5173)",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}

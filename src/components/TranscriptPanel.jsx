@@ -3,6 +3,15 @@ import { countWords } from '../lib/study.js';
 import { download } from '../lib/text.js';
 import Panel from './Panel.jsx';
 
+function formatNoteDate(note) {
+  const raw = note.createdAt || note.updatedAt;
+  if (raw) {
+    const date = new Date(raw);
+    if (!Number.isNaN(date.getTime())) return date.toLocaleString();
+  }
+  return note.d || '';
+}
+
 export default function TranscriptPanel({
   title,
   text,
@@ -14,6 +23,7 @@ export default function TranscriptPanel({
   onDeleteNote,
   notify,
   scrollSignal,
+  serverState = 'checking',
 }) {
   const textareaRef = useRef(null);
   const wordCount = countWords(text);
@@ -89,7 +99,13 @@ export default function TranscriptPanel({
 
       <div className="meta">
         <span id="rt">{Math.ceil(wordCount / 200)} min read</span>
-        <span>Draft autosaves in this browser</span>
+        <span>
+          {serverState === 'online'
+            ? 'Draft autosaves to the server'
+            : serverState === 'offline'
+              ? 'Server offline — draft autosaves in this browser'
+              : 'Draft autosaves automatically'}
+        </span>
       </div>
 
       <div className="tip">
@@ -103,7 +119,7 @@ export default function TranscriptPanel({
             <div>
               <b>{note.t || 'Untitled'}</b>
               <small>
-                {note.d} · {countWords(note.x)} words
+                {[formatNoteDate(note), `${countWords(note.x)} words`].filter(Boolean).join(' · ')}
               </small>
             </div>
             <div className="row" style={{ margin: 0 }}>

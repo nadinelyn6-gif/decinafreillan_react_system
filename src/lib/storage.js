@@ -14,6 +14,13 @@ const store = {
       /* storage can be full or blocked */
     }
   },
+  remove(key) {
+    try {
+      localStorage.removeItem(key);
+    } catch {
+      /* storage can be blocked */
+    }
+  },
 };
 
 export default store;
